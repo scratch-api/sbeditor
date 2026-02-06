@@ -48,7 +48,7 @@ impl Project {
     pub fn from_sb3_bytes(bytes: &[u8], title: String) -> Result<Self, ProjectParseError> {
         let cursor = io::Cursor::new(bytes);
         let archive = ZipArchive::new(cursor)?;
-        println!("{}", archive.len());
+        println!("{}", archive.file_names().collect::<Vec<_>>().join(", "));
         Ok(Self { title })
     }
 }
