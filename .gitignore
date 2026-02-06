@@ -1,1 +1,4 @@
 /target
+# apparently cargo.lock should be ignored for libraries
+cargo.lock
+
