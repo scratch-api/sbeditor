@@ -1,4 +1,3 @@
-use sbeditor::project::Project;
 use std::path::PathBuf;
 
 #[test]
@@ -9,6 +8,6 @@ fn test_open() {
         .join("new.sb3");
 
     assert!(path.exists());
-    let proj = Project::from_sb3(path).unwrap();
+    let proj = sbeditor::Project::from_sb3(path).unwrap();
     println!("{}", proj.title)
 }
