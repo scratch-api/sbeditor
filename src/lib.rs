@@ -1,3 +1,6 @@
+mod project;
+
 pub fn out() {
-    println!("idk")
+    println!("idk");
+    project::speak();
 }

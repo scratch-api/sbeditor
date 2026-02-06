@@ -1,6 +1,6 @@
-use sbeditor::out;
+use sbeditor;
 
 #[test]
 fn it_outs() {
-    out();
+    sbeditor::out();
 }
