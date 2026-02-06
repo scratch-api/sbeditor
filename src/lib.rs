@@ -1,4 +1,4 @@
-mod project;
+pub mod project;
 
 pub fn out() {
     println!("idk");
