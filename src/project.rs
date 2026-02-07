@@ -1,4 +1,6 @@
+use crate::Meta;
 use crate::error;
+use serde::Deserialize;
 use std::{
     fs,
     io::{self, Read},
@@ -6,9 +8,11 @@ use std::{
 };
 use zip::ZipArchive;
 
-#[derive(Debug)]
+#[derive(Debug, Deserialize)]
 pub struct Project {
+    #[serde(skip)]
     pub title: String,
+    pub meta: Meta,
 }
 
 impl Project {
@@ -30,7 +34,9 @@ impl Project {
         Self::from_sb3_json(project_json, title)
     }
     pub fn from_sb3_json(data: String, title: String) -> Result<Self, error::ProjectParseError> {
-        println!("{data}");
-        Ok(Self { title })
+        let mut project: Project = serde_json::from_str(&data)?;
+        project.title = title;
+        println!("{project:#?}");
+        Ok(project)
     }
 }
