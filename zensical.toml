@@ -45,8 +45,8 @@ Copyright &copy; 2026 The authors
 #
 # Read more: https://zensical.org/docs/setup/navigation/
 nav = [
-  { "sbeditor" = "index.md" },
-  { "installation" = "installation.md" },
+  { "Getting started" = "start.md" },
+  { "Installation" = "installation.md" },
   { "Opening a project" = "opening.md" },
   { "Markdown in 5min" = "zensical/markdown.md" },
 ]
