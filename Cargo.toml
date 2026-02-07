@@ -2,6 +2,12 @@
 name = "sbeditor"
 version = "0.1.0"
 edition = "2024"
+license = "MIT"
+description = "Scratch project editing library"
+authors = ["faretek1"]
+repository = "https://github.com/scratch-api/sbeditor"
+homepage = "https://scratchapi.org/sbeditor/"
+readme = "README.md"
 
 [dependencies]
 serde = { version = "1.0.228", features = ["derive"] }
