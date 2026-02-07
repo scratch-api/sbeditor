@@ -1,35 +1,10 @@
-use core::fmt;
-use std::{fs, io, path::PathBuf};
+use crate::error;
+use std::{
+    fs,
+    io::{self, Read},
+    path::PathBuf,
+};
 use zip::ZipArchive;
-
-pub fn speak() {
-    println!("I spake, and thou hearest");
-}
-
-#[derive(Debug, Clone)]
-pub struct ProjectParseError {
-    msg: String,
-}
-impl std::error::Error for ProjectParseError {}
-impl From<zip::result::ZipError> for ProjectParseError {
-    fn from(value: zip::result::ZipError) -> Self {
-        ProjectParseError {
-            msg: value.to_string(),
-        }
-    }
-}
-impl From<io::Error> for ProjectParseError {
-    fn from(value: io::Error) -> Self {
-        ProjectParseError {
-            msg: value.to_string(),
-        }
-    }
-}
-impl fmt::Display for ProjectParseError {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "Failed to parse Project: {}", self.msg)
-    }
-}
 
 #[derive(Debug)]
 pub struct Project {
@@ -37,7 +12,7 @@ pub struct Project {
 }
 
 impl Project {
-    pub fn from_sb3(path: PathBuf) -> Result<Self, ProjectParseError> {
+    pub fn from_sb3(path: PathBuf) -> Result<Self, error::ProjectParseError> {
         let bytes = fs::read(&path)?;
         let filename = match path.file_stem() {
             Some(name) => String::from(name.to_str().unwrap_or("Untitled")),
@@ -45,10 +20,17 @@ impl Project {
         };
         Self::from_sb3_bytes(&bytes, filename)
     }
-    pub fn from_sb3_bytes(bytes: &[u8], title: String) -> Result<Self, ProjectParseError> {
+    pub fn from_sb3_bytes(bytes: &[u8], title: String) -> Result<Self, error::ProjectParseError> {
         let cursor = io::Cursor::new(bytes);
-        let archive = ZipArchive::new(cursor)?;
-        println!("{}", archive.file_names().collect::<Vec<_>>().join(", "));
+        let mut archive = ZipArchive::new(cursor)?;
+        let mut file = archive.by_name("project.json")?;
+        let mut project_json = String::new();
+        file.read_to_string(&mut project_json)?;
+
+        Self::from_sb3_json(project_json, title)
+    }
+    pub fn from_sb3_json(data: String, title: String) -> Result<Self, error::ProjectParseError> {
+        println!("{data}");
         Ok(Self { title })
     }
 }

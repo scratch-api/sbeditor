@@ -9,5 +9,5 @@ fn test_open() {
 
     assert!(path.exists());
     let proj = sbeditor::Project::from_sb3(path).unwrap();
-    println!("{}", proj.title)
+    println!("{:#?}", proj.title)
 }
