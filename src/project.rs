@@ -40,6 +40,8 @@ impl Project {
         Self::from_sb3_json(project_json, title)
     }
     pub fn from_sb3_json(data: String, title: String) -> Result<Self, error::ProjectParseError> {
+        println!("{data}");
+
         let mut project: Project = serde_json::from_str(&data)?;
         project.title = title;
         println!("{project:#?}");

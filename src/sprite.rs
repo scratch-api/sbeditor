@@ -1,3 +1,6 @@
+use std::collections::HashMap;
+
+use crate::Var;
 use serde::Deserialize;
 
 #[derive(Debug, Deserialize)]
@@ -10,4 +13,7 @@ pub struct Sprite {
     pub volume: u8,
     #[serde(rename = "layerOrder")]
     pub layer_order: i32,
+
+    #[serde(rename = "variables")]
+    pub vars: HashMap<String, Var>,
 }
