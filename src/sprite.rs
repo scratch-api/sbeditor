@@ -1,6 +1,6 @@
 use std::collections::HashMap;
 
-use crate::{Broadcast, Comment, Costume, List, Var};
+use crate::{Broadcast, Comment, Costume, List, Sound, Var};
 use serde::Deserialize;
 
 #[derive(Debug, Deserialize)]
@@ -23,4 +23,5 @@ pub struct Sprite {
     pub comments: HashMap<String, Comment>,
 
     pub costumes: Vec<Costume>,
+    pub sounds: Vec<Sound>,
 }

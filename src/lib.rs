@@ -7,6 +7,7 @@ pub mod list;
 pub mod meta;
 pub mod monitor;
 pub mod project;
+pub mod sound;
 pub mod sprite;
 pub mod var;
 
@@ -18,5 +19,6 @@ pub use list::List;
 pub use meta::Meta;
 pub use monitor::Monitor;
 pub use project::Project;
+pub use sound::Sound;
 pub use sprite::Sprite;
 pub use var::Var;
