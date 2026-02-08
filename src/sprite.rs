@@ -1,6 +1,6 @@
 use std::collections::HashMap;
 
-use crate::{List, Var};
+use crate::{Broadcast, List, Var};
 use serde::Deserialize;
 
 #[derive(Debug, Deserialize)]
@@ -17,4 +17,5 @@ pub struct Sprite {
     pub lists: HashMap<String, List>,
     #[serde(rename = "variables")]
     pub vars: HashMap<String, Var>,
+    pub broadcasts: HashMap<String, Broadcast>,
 }
