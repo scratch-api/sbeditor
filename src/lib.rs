@@ -1,4 +1,5 @@
 pub mod broadcast;
+pub mod comment;
 pub mod error;
 pub mod extension;
 pub mod list;
@@ -9,6 +10,7 @@ pub mod sprite;
 pub mod var;
 
 pub use broadcast::Broadcast;
+pub use comment::Comment;
 pub use extension::Extension;
 pub use list::List;
 pub use meta::Meta;
