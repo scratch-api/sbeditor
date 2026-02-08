@@ -47,7 +47,7 @@ impl Project {
         let mut project = match result {
             Ok(project) => project,
             Err(e) => {
-                let msg = format!("{}", e);
+                let msg = format!("oerr: {}", e);
                 return Err(error::ProjectParseError::from(msg));
             }
         };

@@ -1,7 +1,16 @@
 use std::collections::HashMap;
 
-use crate::{Block, Broadcast, Comment, Costume, List, Sound, Var};
+use crate::prim;
+use crate::{Block, Broadcast, Comment, Costume, List, Prim, Sound, Var};
 use serde::Deserialize;
+
+#[derive(Debug, Deserialize)]
+#[serde(untagged)]
+pub enum BlockValue {
+    Block(Box<Block>),
+    #[serde(deserialize_with = "prim::deserialize_prim")]
+    Prim(Prim),
+}
 
 #[derive(Debug, Deserialize)]
 pub struct Sprite {
@@ -19,7 +28,7 @@ pub struct Sprite {
     pub vars: HashMap<String, Var>,
     pub broadcasts: HashMap<String, Broadcast>,
 
-    pub blocks: HashMap<String, Block>,
+    pub blocks: HashMap<String, BlockValue>,
     pub comments: HashMap<String, Comment>,
 
     pub costumes: Vec<Costume>,

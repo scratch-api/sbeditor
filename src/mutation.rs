@@ -1,6 +1,13 @@
 use serde::{Deserialize, Deserializer};
 
 #[derive(Debug, Deserialize, Clone)]
+#[serde(untagged)]
+pub enum ArgumentDefault {
+    String(String),
+    F64(f64),
+    Other(serde_json::Value),
+}
+#[derive(Debug, Deserialize, Clone)]
 #[serde(rename_all = "camelCase")]
 pub struct Mutation {
     // afaik these two attrs are useless
@@ -26,8 +33,7 @@ pub struct Mutation {
         rename = "argumentdefaults",
         deserialize_with = "deserialize_json_string"
     )]
-    pub argument_defaults: Option<Vec<String>>,
-
+    pub argument_defaults: Option<Vec<ArgumentDefault>>,
     #[serde(default, deserialize_with = "deserialize_json_string")]
     pub has_next: Option<bool>,
 }

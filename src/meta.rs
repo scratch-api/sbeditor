@@ -12,5 +12,5 @@ pub struct Meta {
     pub semver: String,
     pub vm: String,
     pub agent: String,
-    pub platform: Platform,
+    pub platform: Option<Platform>,
 }

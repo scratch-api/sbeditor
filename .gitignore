@@ -4,3 +4,4 @@ cargo.lock
 /site/
 /.venv/
 /.cache/
+/tests/fixtures/dabbling

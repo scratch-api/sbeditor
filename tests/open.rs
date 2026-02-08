@@ -1,5 +1,7 @@
 use std::path::PathBuf;
 
+use sbeditor::sprite::BlockValue;
+
 #[test]
 fn test_open() {
     let path = PathBuf::from(env!("CARGO_MANIFEST_DIR"))
@@ -17,6 +19,10 @@ fn test_open() {
             .values()
             .skip(15)
             .take(15)
+            .filter_map(|bv| match bv {
+                BlockValue::Block(b) => Some(b),
+                BlockValue::Prim(_) => None,
+            })
             .map(|b| b.opcode.to_owned())
             .collect::<Vec<_>>()
     );
