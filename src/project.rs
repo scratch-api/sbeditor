@@ -1,3 +1,4 @@
+use crate::Extension;
 use crate::Meta;
 use crate::error;
 use serde::Deserialize;
@@ -13,6 +14,7 @@ pub struct Project {
     #[serde(skip)]
     pub title: String,
     pub meta: Meta,
+    pub extensions: Vec<Extension>,
 }
 
 impl Project {

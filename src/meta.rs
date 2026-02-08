@@ -8,6 +8,7 @@ pub struct Platform {
 
 #[derive(Debug, Deserialize)]
 pub struct Meta {
+    // TODO: Validate semver
     pub semver: String,
     pub vm: String,
     pub agent: String,
