@@ -53,7 +53,7 @@ impl Project {
             }
         };
         project.title = title;
-        println!("{project:#?}");
+        println!("{:#?}", project);
         Ok(project)
     }
 }

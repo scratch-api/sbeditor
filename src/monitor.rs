@@ -14,7 +14,7 @@ pub struct Monitor {
     pub id: String,
     pub mode: String,
     pub opcode: String,
-    // pub params:
+    pub params: serde_json::Value, // TODO: type this into a struct
     pub sprite_name: Option<String>,
     pub value: MonitorValue,
     pub width: i32,
