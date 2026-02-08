@@ -10,6 +10,7 @@ pub enum MonitorValue {
 }
 
 #[derive(Debug, Deserialize)]
+#[serde(rename_all = "camelCase")]
 pub struct Monitor {
     pub id: String,
     pub mode: String,
@@ -23,10 +24,7 @@ pub struct Monitor {
     pub y: i32,
     pub visible: bool,
 
-    #[serde(rename = "sliderMin")]
     pub slider_min: Option<f64>,
-    #[serde(rename = "sliderMax")]
     pub slider_max: Option<f64>,
-    #[serde(rename = "isDiscrete")]
     pub is_discrete: Option<bool>,
 }

@@ -53,7 +53,11 @@ impl Project {
             }
         };
         project.title = title;
-        // println!("{:#?}", project);
+        let sprite = project.get_sprite_by_name("Part 1").unwrap();
+        println!("{:#?}", sprite.comments);
         Ok(project)
+    }
+    pub fn get_sprite_by_name(&mut self, name: &str) -> Option<&mut Sprite> {
+        self.sprites.iter_mut().find(|s| s.name == name)
     }
 }
