@@ -7,6 +7,11 @@ pub struct ProjectParseError {
 }
 
 impl std::error::Error for ProjectParseError {}
+impl From<String> for ProjectParseError {
+    fn from(value: String) -> Self {
+        ProjectParseError { msg: value }
+    }
+}
 impl From<serde_json::Error> for ProjectParseError {
     fn from(value: serde_json::Error) -> Self {
         ProjectParseError {

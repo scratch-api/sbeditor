@@ -1,6 +1,4 @@
-use serde_tuple::*;
+use serde::Deserialize;
 
-#[derive(Debug, Deserialize_tuple)]
-pub struct Broadcast {
-    pub name: String,
-}
+#[derive(Debug, Deserialize)]
+pub struct Broadcast(pub String);

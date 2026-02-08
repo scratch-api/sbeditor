@@ -7,6 +7,8 @@ pub enum VarValue {
     String(String),
     I32(i32),
     F64(f64),
+    Bool(bool),
+    // Other(serde_json::Value),
 }
 
 #[derive(Debug, Deserialize_tuple)]

@@ -43,7 +43,15 @@ impl Project {
     pub fn from_sb3_json(data: String, title: String) -> Result<Self, error::ProjectParseError> {
         println!("{data}");
 
-        let mut project: Project = serde_json::from_str(&data)?;
+        let deserializer = &mut serde_json::Deserializer::from_str(&data);
+        let result: Result<Project, _> = serde_path_to_error::deserialize(deserializer);
+        let mut project = match result {
+            Ok(project) => project,
+            Err(e) => {
+                let msg = format!("{}", e);
+                return Err(error::ProjectParseError::from(msg));
+            }
+        };
         project.title = title;
         println!("{project:#?}");
         Ok(project)
