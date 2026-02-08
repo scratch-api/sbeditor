@@ -41,8 +41,7 @@ impl Project {
         Self::from_sb3_json(project_json, title)
     }
     pub fn from_sb3_json(data: String, title: String) -> Result<Self, error::ProjectParseError> {
-        println!("{data}");
-
+        // println!("{data}");
         let deserializer = &mut serde_json::Deserializer::from_str(&data);
         let result: Result<Project, _> = serde_path_to_error::deserialize(deserializer);
         let mut project = match result {
@@ -53,11 +52,7 @@ impl Project {
             }
         };
         project.title = title;
-        let sprite = project.get_sprite_by_name("Part 1").unwrap();
-        println!(
-            "{:#?}",
-            sprite.blocks.values().skip(15).take(15).collect::<Vec<_>>()
-        );
+
         Ok(project)
     }
     pub fn get_sprite_by_name(&mut self, name: &str) -> Option<&mut Sprite> {
