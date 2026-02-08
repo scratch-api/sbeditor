@@ -18,7 +18,8 @@ pub struct Project {
     pub meta: Meta,
     pub extensions: Vec<Extension>,
     pub monitors: Vec<Monitor>,
-    pub targets: Vec<Sprite>,
+    #[serde(rename = "targets")]
+    pub sprites: Vec<Sprite>,
 }
 
 impl Project {
