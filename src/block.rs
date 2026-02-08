@@ -1,3 +1,6 @@
+use std::collections::HashMap;
+
+use crate::Input;
 use serde::Deserialize;
 
 #[derive(Debug, Deserialize)]
@@ -6,7 +9,7 @@ pub struct Block {
     pub opcode: String,
     pub next: Option<String>,
     pub parent: Option<String>,
-    // pub inputs: ...,
+    pub inputs: HashMap<String, Input>,
     // pub fields: ...,
     pub shadow: bool,
     #[serde(rename = "topLevel")]

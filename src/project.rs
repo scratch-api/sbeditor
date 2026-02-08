@@ -54,7 +54,10 @@ impl Project {
         };
         project.title = title;
         let sprite = project.get_sprite_by_name("Part 1").unwrap();
-        println!("{:#?}", sprite.comments);
+        println!(
+            "{:#?}",
+            sprite.blocks.values().skip(15).take(15).collect::<Vec<_>>()
+        );
         Ok(project)
     }
     pub fn get_sprite_by_name(&mut self, name: &str) -> Option<&mut Sprite> {
