@@ -3,6 +3,7 @@ use serde::Deserialize;
 #[derive(Debug, Deserialize)]
 #[serde(untagged)]
 pub enum MonitorValue {
+    // TODO: Check if these should be f64 or even strings
     I32(i32),
     Vec(Vec<i32>),
     Other(serde_json::Value),
@@ -22,7 +23,10 @@ pub struct Monitor {
     pub y: i32,
     pub visible: bool,
 
+    #[serde(rename = "sliderMin")]
     pub slider_min: Option<f64>,
+    #[serde(rename = "sliderMax")]
     pub slider_max: Option<f64>,
+    #[serde(rename = "isDiscrete")]
     pub is_discrete: Option<bool>,
 }
