@@ -15,11 +15,7 @@ fn test_bima() {
         sprite
             .blocks
             .values()
-            .filter_map(|b| if !b.fields.is_empty() {
-                Some(b.fields.to_owned())
-            } else {
-                None
-            })
+            .filter_map(|b| b.mutation.to_owned())
             .collect::<Vec<_>>()
     );
 }

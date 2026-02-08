@@ -1,6 +1,6 @@
 use std::collections::HashMap;
 
-use crate::{Field, Input};
+use crate::{Field, Input, Mutation};
 use serde::Deserialize;
 
 #[derive(Debug, Deserialize)]
@@ -17,5 +17,5 @@ pub struct Block {
     pub comment: Option<String>,
     pub x: Option<i32>,
     pub y: Option<i32>,
-    // pub mutation: Option<...>,
+    pub mutation: Option<Mutation>,
 }
