@@ -1,5 +1,6 @@
 use crate::Extension;
 use crate::Meta;
+use crate::Monitor;
 use crate::error;
 use serde::Deserialize;
 use std::{
@@ -15,6 +16,7 @@ pub struct Project {
     pub title: String,
     pub meta: Meta,
     pub extensions: Vec<Extension>,
+    pub monitors: Vec<Monitor>,
 }
 
 impl Project {
