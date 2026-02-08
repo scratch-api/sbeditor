@@ -1,3 +1,4 @@
+pub mod block;
 pub mod broadcast;
 pub mod comment;
 pub mod costume;
@@ -11,6 +12,7 @@ pub mod sound;
 pub mod sprite;
 pub mod var;
 
+pub use block::Block;
 pub use broadcast::Broadcast;
 pub use comment::Comment;
 pub use costume::Costume;
